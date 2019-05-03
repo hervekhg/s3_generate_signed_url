@@ -6,11 +6,12 @@ from logging import getLogger, info
 
 BUCKET = environ['BUCKET_NAME']
 KEY = environ['KEY']
+REGION = environ['REGION']
 
 
 def lambda_handler(event, context):
 
-    client_s3 = client('s3', config=session.Config(signature_version='s3v4'))
+    client_s3 = client('s3', region_name=REGION, config=session.Config(signature_version='s3v4'))
     logger = getLogger()
     logger.setLevel("INFO")
 
