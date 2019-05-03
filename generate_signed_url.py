@@ -1,5 +1,5 @@
 from json import dumps
-from boto3 import client
+from boto3 import client, session
 from requests import get
 from os import environ
 from logging import getLogger, info
@@ -10,7 +10,7 @@ KEY = environ['KEY']
 
 def lambda_handler(event, context):
 
-    client_s3 = client('s3')
+    client_s3 = client('s3', config=session.Config(signature_version='s3v4'))
     logger = getLogger()
     logger.setLevel("INFO")
 
