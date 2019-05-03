@@ -20,7 +20,8 @@ def lambda_handler(event, context):
         Params={
             'Bucket': BUCKET,
             'Key': KEY
-        }
+        },
+        ExpiresIn=60*10
     )
 
     response = get(url)
